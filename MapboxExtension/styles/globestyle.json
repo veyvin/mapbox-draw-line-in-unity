@@ -1,0 +1,505 @@
+{
+  "version": 8,
+  "name": "globe-copy",
+  "metadata": {
+    "mapbox:autocomposite": true,
+    "mapbox:type": "default",
+    "mapbox:groups": {
+      "e0c63d22cd4ea376f4bd78e6334da9c0": {
+        "name": "Group"
+      }
+    }
+  },
+  "center": [
+    117.10105702331214,
+    36.11857081226732
+  ],
+  "zoom": 12.875344140896377,
+  "bearing": 0,
+  "pitch": 0,
+  "light": {
+    "color": "hsl(0, 0%, 100%)",
+    "anchor": "map"
+  },
+  "sources": {
+    "mapbox": {
+      "url": "mapbox://mapbox.satellite",
+      "type": "raster",
+      "tileSize": 256
+    },
+    "composite": {
+      "url": "mapbox://mapbox.mapbox-streets-v7,veyvin.cj9dsmuj82cit2qorha86arnv-0ucv2",
+      "type": "vector"
+    }
+  },
+  "sprite": "mapbox://sprites/veyvin/cj9ds1com7agm2rs1n1wkqool",
+  "glyphs": "mapbox://fonts/veyvin/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "rgb(4,7,14)"
+      }
+    },
+    {
+      "id": "satellite",
+      "type": "raster",
+      "source": "mapbox",
+      "source-layer": "mapbox_satellite_full"
+    },
+    {
+      "id": "admin",
+      "type": "line",
+      "metadata": {
+        "mapbox:group": "e0c63d22cd4ea376f4bd78e6334da9c0"
+      },
+      "source": "composite",
+      "source-layer": "admin",
+      "minzoom": 1,
+      "filter": [
+        "all",
+        [
+          "==",
+          "admin_level",
+          2
+        ],
+        [
+          "==",
+          "disputed",
+          0
+        ],
+        [
+          "==",
+          "maritime",
+          0
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-width": 2
+      }
+    },
+    {
+      "id": "country-label",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "e0c63d22cd4ea376f4bd78e6334da9c0"
+      },
+      "source": "composite",
+      "source-layer": "country_label",
+      "minzoom": 1,
+      "maxzoom": 6,
+      "filter": [
+        "in",
+        "scalerank",
+        1,
+        2
+      ],
+      "layout": {
+        "visibility": "visible",
+        "text-field": "{name_zh}",
+        "text-font": [
+          "DIN Offc Pro Medium",
+          "Arial Unicode MS Regular"
+        ],
+        "text-max-width": {
+          "base": 1,
+          "stops": [
+            [
+              0,
+              5
+            ],
+            [
+              3,
+              6
+            ]
+          ]
+        },
+        "text-size": 20
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 0%)",
+        "text-halo-color": "rgb(255,255,255)",
+        "text-halo-width": 1.25
+      }
+    },
+    {
+      "id": "state-label",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "e0c63d22cd4ea376f4bd78e6334da9c0"
+      },
+      "source": "composite",
+      "source-layer": "state_label",
+      "minzoom": 4,
+      "maxzoom": 8,
+      "layout": {
+        "visibility": "visible",
+        "text-field": "{name_zh}",
+        "text-size": 20
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 100%)"
+      }
+    },
+    {
+      "id": "place-label",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "e0c63d22cd4ea376f4bd78e6334da9c0"
+      },
+      "source": "composite",
+      "source-layer": "place_label",
+      "minzoom": 8,
+      "filter": [
+        "all",
+        [
+          "<=",
+          "scalerank",
+          2
+        ],
+        [
+          "==",
+          "type",
+          "city"
+        ],
+        [
+          "in",
+          "ldir",
+          "E",
+          "S",
+          "SE",
+          "SW"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible",
+        "text-field": "{name_zh-Hans}",
+        "text-size": 20
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 100%)"
+      }
+    },
+    {
+      "id": "place-label (1)",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "e0c63d22cd4ea376f4bd78e6334da9c0"
+      },
+      "source": "composite",
+      "source-layer": "place_label",
+      "minzoom": 8,
+      "filter": [
+        "all",
+        [
+          "!in",
+          "scalerank",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          "==",
+          "type",
+          "city"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name_zh-Hans}"
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 100%)"
+      }
+    },
+    {
+      "id": "line",
+      "type": "line",
+      "source": "composite",
+      "source-layer": "line",
+      "minzoom": 10,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsl(359, 100%, 46%)",
+        "line-opacity": 1,
+        "line-width": 3
+      }
+    },
+    "##########"
+  ],
+  "owner": "veyvin",
+  "visibility": "private",
+  "draft": false
+}{
+    "version": 8,
+    "name": "globe-copy",
+    "metadata": {
+        "mapbox:autocomposite": true,
+        "mapbox:type": "default",
+        "mapbox:groups": {
+            "e0c63d22cd4ea376f4bd78e6334da9c0": {
+                "name": "Group"
+            }
+        }
+    },
+    "center": [
+        117.3329480894065,
+        35.62626948419154
+    ],
+    "zoom": 6.498655144560745,
+    "bearing": 0,
+    "pitch": 0,
+    "light": {
+        "color": "hsl(0, 0%, 100%)",
+        "anchor": "map"
+    },
+    "sources": {
+        "mapbox": {
+            "url": "mapbox://mapbox.satellite",
+            "type": "raster",
+            "tileSize": 256
+        },
+        "composite": {
+            "url": "mapbox://mapbox.mapbox-streets-v7,veyvin.cj9dsmuj82cit2qorha86arnv-0ucv2,veyvin.data",
+            "type": "vector"
+        }
+    },
+    "sprite": "mapbox://sprites/veyvin/cj9ds1com7agm2rs1n1wkqool",
+    "glyphs": "mapbox://fonts/veyvin/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "rgb(4,7,14)"
+      }
+    },
+    {
+      "id": "satellite",
+      "type": "raster",
+      "source": "mapbox",
+      "source-layer": "mapbox_satellite_full"
+    },
+    {
+      "id": "admin",
+      "type": "line",
+      "metadata": {
+        "mapbox:group": "e0c63d22cd4ea376f4bd78e6334da9c0"
+      },
+      "source": "composite",
+      "source-layer": "admin",
+      "minzoom": 1,
+      "filter": [
+        "all",
+        [
+          "==",
+          "admin_level",
+          2
+        ],
+        [
+          "==",
+          "disputed",
+          0
+        ],
+        [
+          "==",
+          "maritime",
+          0
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-width": 2,
+        "line-color": "hsl(230, 8%, 51%)"
+      }
+    },
+    {
+      "id": "country-label",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "e0c63d22cd4ea376f4bd78e6334da9c0"
+      },
+      "source": "composite",
+      "source-layer": "country_label",
+      "minzoom": 1,
+      "maxzoom": 6,
+      "filter": [
+        "in",
+        "scalerank",
+        1,
+        2
+      ],
+      "layout": {
+        "visibility": "visible",
+        "text-field": "{name_zh}",
+        "text-font": [
+          "DIN Offc Pro Medium",
+          "Arial Unicode MS Regular"
+        ],
+        "text-max-width": {
+          "base": 1,
+          "stops": [
+            [
+              0,
+              5
+            ],
+            [
+              3,
+              6
+            ]
+          ]
+        },
+        "text-size": 20
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 0%)",
+        "text-halo-color": "rgb(255,255,255)",
+        "text-halo-width": 1.25
+      }
+    },
+    {
+      "id": "state-label",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "e0c63d22cd4ea376f4bd78e6334da9c0"
+      },
+      "source": "composite",
+      "source-layer": "state_label",
+      "minzoom": 4,
+      "maxzoom": 8,
+      "layout": {
+        "visibility": "visible",
+        "text-field": "{name_zh}",
+        "text-size": 20
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 100%)"
+      }
+    },
+    {
+      "id": "place-label",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "e0c63d22cd4ea376f4bd78e6334da9c0"
+      },
+      "source": "composite",
+      "source-layer": "place_label",
+      "minzoom": 8,
+      "filter": [
+        "all",
+        [
+          "<=",
+          "scalerank",
+          2
+        ],
+        [
+          "==",
+          "type",
+          "city"
+        ],
+        [
+          "in",
+          "ldir",
+          "E",
+          "S",
+          "SE",
+          "SW"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible",
+        "text-field": "{name_zh-Hans}",
+        "text-size": 20
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 100%)"
+      }
+    },
+    {
+      "id": "place-label (1)",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "e0c63d22cd4ea376f4bd78e6334da9c0"
+      },
+      "source": "composite",
+      "source-layer": "place_label",
+      "minzoom": 8,
+      "filter": [
+        "all",
+        [
+          "!in",
+          "scalerank",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          "==",
+          "type",
+          "city"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name_zh-Hans}"
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 100%)"
+      }
+    },
+    {
+      "id": "line",
+      "type": "line",
+      "source": "composite",
+      "source-layer": "line",
+      "minzoom": 10,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsl(359, 100%, 46%)",
+        "line-opacity": 1,
+        "line-width": 3
+      }
+    },
+    {
+      "id": "admin (1)",
+      "type": "line",
+      "source": "composite",
+      "source-layer": "admin",
+      "filter": [
+        "all",
+        [
+          "==",
+          "maritime",
+          0
+        ],
+        [
+          ">=",
+          "admin_level",
+          3
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {}
+    },
+    "##########"
+  ],
+    "owner": "veyvin",
+    "visibility": "private",
+    "draft": false
+}

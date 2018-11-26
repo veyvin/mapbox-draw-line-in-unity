@@ -1,0 +1,58 @@
+{
+    "version": 8,
+    "name": "New Style Name",
+    "metadata": {},
+    "center": [
+        35.29976378405479,
+        21.779596618399296
+    ],
+    "zoom": 2.132092714674848,
+    "bearing": 19.708666141677664,
+    "pitch": 28,
+    "light": {
+        "color": "hsl(0, 0%, 100%)",
+        "anchor": "map"
+    },
+    "sources": {
+        "mapbox://mapbox.satellite": {
+            "url": "mapbox://mapbox.satellite",
+            "type": "raster",
+            "tileSize": 256
+        },
+        "mapbox://mapbox.mapbox-terrain-v2": {
+            "url": "mapbox://mapbox.mapbox-terrain-v2",
+            "type": "vector"
+        },
+        "mapbox://veyvin.data": {
+            "url": "mapbox://veyvin.data",
+            "type": "vector"
+        }
+    },
+    "sprite": "mapbox://sprites/veyvin/cj6fvezqi2w3q2spg2brumwvd",
+    "glyphs": "mapbox://fonts/veyvin/{fontstack}/{range}.pbf",
+    "layers": [
+        {
+            "id": "mapbox-mapbox-satellite",
+            "type": "raster",
+            "source": "mapbox://mapbox.satellite",
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {}
+        },
+        {
+            "id": "contour",
+            "type": "fill",
+            "source": "mapbox://mapbox.mapbox-terrain-v2",
+            "source-layer": "contour",
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {}
+        },
+        ##########
+    ],
+    "owner": "veyvin",
+    "visibility": "public",
+    "draft": false
+}
