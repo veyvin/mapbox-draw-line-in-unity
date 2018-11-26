@@ -1,0 +1,15 @@
+{
+  "name": "mapboxjs",
+  "version": "1.0.0",
+  "description": "bcmap",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  }, "dependencies": {
+    "grpc": ">=1.7.1",
+    "mapbox": ""
+  } ,
+  "author": "huzhengfei",
+  "license": "ISC"
+}

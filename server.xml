@@ -1,0 +1,9 @@
+    <service>
+      <id>Mapservice</id>
+      <name>Mapservice</name>
+      <description>服务</description>
+      <env name="JENKINS_HOME" value="%BASE%"/>
+      <executable></executable>
+      <arguments></arguments>
+      <logmode>rotate</logmode>
+    </service>

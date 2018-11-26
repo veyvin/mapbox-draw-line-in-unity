@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package BCMapBox;
+
+service BCMap {
+  rpc TransToken (MapRequestToken) returns (MapReply) {}
+  rpc TransDataSetId (MapRequestDatasetId) returns (MapReply) {}
+  rpc TransTilesetId (MapRequestTilesetId) returns (MapReply) {}
+  rpc TransOutdoorStyle (MapRequestOutdoorStyle) returns (MapReply) {}
+  rpc TransGlobeStyle (MapRequestGlobeStyle) returns (MapReply) {}
+  rpc TransFeature (MapRequestFeature) returns (MapReply) {}
+  rpc TransGlobeId (MapRequestGlobeId) returns (MapReply) {}
+  rpc TransOutdoorId (MapRequestOutdoorId) returns (MapReply) {}
+}
+message MapRequestToken{
+  string token = 1;
+}
+message MapRequestDatasetId{
+ string datasetId=1;
+}
+message MapRequestTilesetId{
+  string tilesetId=1;
+ }
+message MapRequestOutdoorStyle{
+  string outdoorStyle=1;
+ }
+ message MapRequestGlobeStyle{
+  string globeStyle=1;
+ }
+ message MapRequestFeature{
+  string feature=1;
+ }
+ message MapRequestGlobeId{
+  string globeId=1;
+ }
+ message MapRequestOutdoorId{
+  string outdoorId=1;
+ }
+
+
+message MapReply {
+  string message = 1;
+}
+
